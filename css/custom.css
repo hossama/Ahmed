@@ -1,0 +1,97 @@
+/* Flyout menu base styles */
+.flyout-menu {
+    position: absolute;
+    left: 100%;
+    top: 0;
+    min-width: 200px;
+    background-color: var(--bs-dark);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--bs-border-radius);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    list-style: none;
+    padding: 0.5rem 0;
+    margin: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Parent item positioning */
+.nav-item.has-flyout {
+    position: relative;
+}
+
+/* Show menu on hover with animation */
+.nav-item.has-flyout:hover > .flyout-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+.flyout-menu .nav-item{
+ width: 100%;
+}
+/* Nested flyout menus */
+.flyout-menu .nav-item.has-flyout {
+    position: relative;
+
+}
+
+.flyout-menu .flyout-menu {
+    top: 0;
+    left: 100%;
+}
+
+/* Arrow animation */
+.nav-item.has-flyout > .nav-link .right {
+    transition: transform 0.3s ease;
+}
+
+.nav-item.has-flyout:hover > .nav-link .right {
+    transform: rotate(-90deg);
+}
+
+/* Menu items styling */
+.flyout-menu .nav-item .nav-link {
+    padding: 0.5rem 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    transition: all 0.2s ease;
+}
+
+.flyout-menu .nav-item .nav-link:hover {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* RTL Support */
+[dir="rtl"] .flyout-menu {
+    left: auto;
+    right: 100%;
+    transform: translateX(-10px);
+}
+
+[dir="rtl"] .nav-item.has-flyout:hover > .flyout-menu {
+    transform: translateX(0);
+}
+
+/* Add subtle hover indicator */
+.flyout-menu .nav-item {
+    position: relative;
+}
+
+.flyout-menu .nav-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 0;
+    background: var(--bs-primary);
+    transition: height 0.2s ease;
+}
+
+.flyout-menu .nav-item:hover::before {
+    height: 80%;
+}
